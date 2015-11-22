@@ -29,18 +29,29 @@ public class TakeCoin : MonoBehaviour {
         {
             if (container[objectIndex + 1] == null || container[objectIndex - 1] == null)
             {
-                takeCoin();
+                takeCoin(containerObject);
             }
         }
         else
         {
-            takeCoin();
+            takeCoin(containerObject);
         }
     }
 
-    void takeCoin()
+    void takeCoin(GameObject manager)
     {
-        scoreObject = GameObject.Find("Player1Score");
+        int turn = manager.GetComponent<GameManager>().playerTurn;
+
+        if (turn == 1)
+        {
+            scoreObject = GameObject.Find("Player1Score");
+            manager.GetComponent<GameManager>().playerTurn = 2;
+        }
+        else
+        {
+            scoreObject = GameObject.Find("Player2Score");
+            manager.GetComponent<GameManager>().playerTurn = 1;
+        }
         scoreValue = int.Parse(scoreObject.GetComponent<TextMesh>().text);
         scoreValue += int.Parse(gameObject.transform.GetChild(0).GetComponent<TextMesh>().text);
         scoreObject.GetComponent<TextMesh>().text = scoreValue.ToString();
