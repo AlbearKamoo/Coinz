@@ -42,6 +42,7 @@ public class TakeCoin : MonoBehaviour {
     {
         int turn = manager.GetComponent<GameManager>().playerTurn;
         GameManager winManager = manager.GetComponent<GameManager>();
+        Timer timer = GameObject.Find("Countdown").GetComponent<Timer>();
 
         if (turn == 1)
         {
@@ -57,6 +58,7 @@ public class TakeCoin : MonoBehaviour {
         scoreValue += int.Parse(gameObject.transform.GetChild(0).GetComponent<TextMesh>().text);
         scoreObject.GetComponent<TextMesh>().text = scoreValue.ToString();
 
+        timer.resetTimer();
         winManager.checkWin();
         Destroy(gameObject);
         labelManager.changeLabel();
