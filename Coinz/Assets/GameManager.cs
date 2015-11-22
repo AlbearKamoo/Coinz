@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour {
     public int playerTurn;
     [HideInInspector]
     public int destroyed;
-
+    [HideInInspector]
+    public string winner;
     public LabelManager labelManager;
+    
 
     // Use this for initialization
     void Start () {
@@ -38,8 +40,22 @@ public class GameManager : MonoBehaviour {
         destroyed += 1;
         if (destroyed == gameObject.GetComponent<Spawn>().coinAmount)
         {
-            Debug.Log("GAME OVER");
-        }
+            int player1score = int.Parse(GameObject.Find("Player1Score").GetComponent<TextMesh>().text);
+            int player2score = int.Parse(GameObject.Find("Player2Score").GetComponent<TextMesh>().text);
+            if (player1score > player2score)
+            {
+                winner = "Player 1 wins!";
+            }
+            else if(player2score > player1score)
+            {
+                winner = "Player 2 wins!";
+            }
+            else
+            {
+                winner = "It's a tie!";
+            }
+            GameObject.Find("Countdown").GetComponent<Timer>().endTimer();
+        }   
     }
 
 
