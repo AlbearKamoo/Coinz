@@ -2,8 +2,12 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+    [HideInInspector]
     public int playerTurn;
+    [HideInInspector]
     public int destroyed;
+
+    public LabelManager labelManager;
 
     // Use this for initialization
     void Start () {
@@ -15,6 +19,19 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         
 	}
+
+    public void switchTurn()
+    {
+        if (playerTurn == 1)
+        {
+            playerTurn = 2;
+        }
+        else
+        {
+            playerTurn = 1;
+        }
+        labelManager.changeLabel();
+    }
 
     public void checkWin()
     {

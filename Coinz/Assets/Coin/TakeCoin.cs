@@ -6,7 +6,6 @@ public class TakeCoin : MonoBehaviour {
     private GameObject containerObject;
     private GameObject[] container;
     private int scoreValue;
-    public LabelManager labelManager;
 
 	// Use this for initialization
 	void Awake () {
@@ -47,12 +46,12 @@ public class TakeCoin : MonoBehaviour {
         if (turn == 1)
         {
             scoreObject = GameObject.Find("Player1Score");
-            manager.GetComponent<GameManager>().playerTurn = 2;
+            manager.GetComponent<GameManager>().switchTurn();
         }
         else
         {
             scoreObject = GameObject.Find("Player2Score");
-            manager.GetComponent<GameManager>().playerTurn = 1;
+            manager.GetComponent<GameManager>().switchTurn();
         }
         scoreValue = int.Parse(scoreObject.GetComponent<TextMesh>().text);
         scoreValue += int.Parse(gameObject.transform.GetChild(0).GetComponent<TextMesh>().text);
@@ -61,6 +60,5 @@ public class TakeCoin : MonoBehaviour {
         timer.resetTimer();
         winManager.checkWin();
         Destroy(gameObject);
-        labelManager.changeLabel();
     }
 }

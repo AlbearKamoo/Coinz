@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Timer : MonoBehaviour {
-    public float timer;
+    private float timer;
+    public float turnTime;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,13 @@ public class Timer : MonoBehaviour {
 	void Update () {
         timer += Time.deltaTime;
         float seconds = Mathf.Floor(timer % 60);
-        gameObject.GetComponent<TextMesh>().text = (10 - seconds).ToString("00");
+        gameObject.GetComponent<TextMesh>().text = (turnTime - seconds).ToString("00");
+
+        if (seconds >= turnTime)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().switchTurn();
+            resetTimer();
+        }
     }
 
     public void resetTimer()
