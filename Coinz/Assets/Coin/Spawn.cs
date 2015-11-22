@@ -3,11 +3,14 @@ using System.Collections;
 
 public class Spawn : MonoBehaviour {
     public GameObject coin;
+    public GameObject[] coins;
     public int coinAmount;
 
     // Use this for initialization
     void Start()
     {
+        coins = new GameObject[coinAmount];
+
         for (int x = 0; x < coinAmount; x++)
         {
             GameObject coinObject = Instantiate(coin, new Vector2(x-(coinAmount/2), 0), Quaternion.identity) as GameObject;
@@ -25,6 +28,8 @@ public class Spawn : MonoBehaviour {
             {
                 coinText.text = number.ToString();
             }
+
+            coins[x] = coinObject;
         }
     }
       
