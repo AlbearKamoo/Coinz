@@ -48,6 +48,7 @@
      <Compile Include="Assets\Coin\Spawn.cs" />
      <Compile Include="Assets\Coin\TakeCoin.cs" />
      <Compile Include="Assets\GameManager.cs" />
+     <Compile Include="Assets\Stage\LabelManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

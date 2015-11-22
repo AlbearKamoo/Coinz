@@ -17,7 +17,7 @@ public class Spawn : MonoBehaviour {
             GameObject textObject = coinObject.transform.GetChild(0).gameObject;
             TextMesh coinText = textObject.GetComponent<TextMesh>();
              
-            int number = Random.Range(0, 10);
+            int number = Random.Range(1, 10);
             if (number == 0)
             {
                 coinText.text = "Z";
